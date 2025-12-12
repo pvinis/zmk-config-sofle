@@ -2,7 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 ///#include <dt-bindings/zmk/rgb.h>
-///#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 // layers
 #define QWERTY 0
@@ -69,7 +69,7 @@
 			// | SFT     |  Z  |  X  |  C  |  V  |  B  |    |      |    |  N  |  M  |  ,  |  .  |  /  | SFT |
 			//                 |     | CMD | SYM | BSP |    |      |    | SPC | SYS | HPR |     |
 			bindings = <
-			&trans          &trans  &trans    &trans      &trans     &trans                        &trans   &trans      &trans     &trans   &trans    &trans
+			&trans          &trans  &trans    &trans      &trans     &trans                        &trans   &trans      &trans     &trans   &trans    &ext_power EP_TOG
 			&lt NUMBER TAB  &kp Q   &kp W     &kp E       &kp R      &kp T                         &kp Y    &kp U       &kp I      &kp O    &kp P     &kp F12
 			&mt LCTRL ESC   &kp A   &kp S     &kp D       &kp F      &kp G                         &kp H    &kp J       &kp K      &kp L    &kp SEMI  &kp ENTER
 			&shftlang       &kp Z   &kp X     &kp C       &kp V      &kp B     &trans      &trans  &kp N    &kp M       &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
@@ -237,3 +237,4 @@
 // - kbctl
 // - bootloader
 // - shftlang
+// ext_power EP_TOG
