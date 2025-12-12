@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 
 // layers
 #define QWERTY 0
@@ -93,20 +94,37 @@
 
     };
 
-		number_layer {
 			display-name = "raise";
 			// ------------------------------------------------------------------------------------------------------------
+		number_layer {
+			display-name = "raise";
 			// |    |     |     |     |     |     |                   |     |     |     |     |     |    |
 			// |    |  1  |  2  |  3  |  4  |  5  |                   |  6  |  7  |  8  |  9  |  0  |    |
 			// |    |     |     |     |     |     |                   |     |  4  |  5  |  6  |     |    |
 			// |    |     |     |     |     |     |    |        |     |     |  1  |  2  |  3  |     |    |
 			//            |     |     |     |     |    |        |     |  0  |  .  |     |     |
 			bindings = <
-			&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-			&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                    &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-			&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
-			&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
-			/**/            &trans  &trans  &trans  &trans  &trans    &trans  &kp N0  &kp DOT  &trans  &trans
+			&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans  &trans
+			&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                      &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
+			&trans  &trans  &trans  &trans  &trans  &trans                      &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
+			&trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
+			/**/            &trans  &trans  &trans  &trans  &trans      &trans  &kp N0  &kp DOT  &trans  &trans
+			>;
+		};
+		
+		kbctl_layer {
+			display-name = "kbctl";
+			// |    |    |    |    |       |    |                |    |        |    |    |    |    |
+			// |    |    |    |    | BTLDR |    |                |    | BTLDR  |    |    |    |    |
+			// |    |    |    |    |       |    |                |    |        |    |    |    |    |
+			// |    |    |    |    |       |    |    |      |    |    | BT/USB |    |    |    |    |
+			//                |    |       |    |    |      |    |    |        |    |    |    |
+			bindings = <
+			&none  &none  &none  &none  &none        &none                      &none  &none         &none  &none  &none  &none
+			&none  &none  &none  &none  &bootloader  &none                      &none  &bootloader   &none  &none  &none  &none
+			&none  &none  &none  &none  &none        &none                      &none  &none         &none  &none  &none  &none
+			&none  &none  &none  &none  &none        &none   &none      &none   &none  &out OUT_TOG  &none  &none  &none  &none
+			/**/          &none  &trans &none        &none   &none      &none   &none  &trans        &none  &none
 			>;
 		};
 	};
